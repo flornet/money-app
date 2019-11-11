@@ -24,7 +24,7 @@ class RecurrentEntriesController < ApplicationController
   # POST /recurrent_entries
   # POST /recurrent_entries.json
   def create
-    @recurrent_entry = RecurrentEntry.new(recurrent_entry_params)
+    @recurrent_entry = RecurrentEntry.new(reformat_value(recurrent_entry_params))
 
     respond_to do |format|
       if @recurrent_entry.save
@@ -41,7 +41,7 @@ class RecurrentEntriesController < ApplicationController
   # PATCH/PUT /recurrent_entries/1.json
   def update
     respond_to do |format|
-      if @recurrent_entry.update(recurrent_entry_params)
+      if @recurrent_entry.update(reformat_value(recurrent_entry_params))
         format.html { redirect_to @recurrent_entry, notice: 'Recurrent entry was successfully updated.' }
         format.json { render :show, status: :ok, location: @recurrent_entry }
       else
@@ -70,5 +70,19 @@ class RecurrentEntriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def recurrent_entry_params
       params.require(:recurrent_entry).permit(:active, :user_id, :account_id, :category_id, :checked, :comment, :value, :frequency, :start_date, :end_date)
+    end
+
+    # Works only with the 'value' field
+    #   Replaces ',' by '.'
+    #   Adds '-' when nothing is provided by default
+    def reformat_value(params)
+      local_params = params
+      if (!local_params[:value].to_s.starts_with?("+") && !local_params[:value].to_s.starts_with?("-"))
+        local_params[:value] = local_params[:value].to_s.gsub(',', '.').to_f.to_s
+        local_params[:value] = - local_params[:value].to_f
+      else
+        local_params[:value] = local_params[:value].to_s.gsub(',', '.').to_f.to_s
+      end
+      return local_params
     end
 end

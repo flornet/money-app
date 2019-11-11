@@ -57,6 +57,7 @@ body {
 }
 .mo-main .mo-account .mo-account-header {
   border-bottom: 2px #A8968F solid;
+  position: relative;
 }
 .mo-main .mo-account .mo-account-header h1.uk-h1 {
   color:#A8968F;
@@ -76,16 +77,32 @@ body {
   display: block;
   float:right;
 }
-.mo-main .mo-account {
-
+.mo-main .mo-account .mo-account-header .mo-solde-total {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0.6em;
+  font-size: 1.6em;
 }
 .mo-main .mo-account .mo-current-entries {
   margin-left:1em;
   top:142px;
-  bottom:300px;
+  bottom:360px;
+}
+.mo-main .mo-account .mo-upcoming-entries-header{
+  position: absolute;
+  left:1em;
+  right: 28em;
+  bottom:310px;
+  border-bottom: 2px #A8968F solid;
+  text-align: right;
+  padding-bottom:0.3em;
+}
+.mo-main .mo-account .mo-upcoming-entries-header .mo-solde-futur {
+  font-size: 1.2em;
 }
 .mo-main .mo-account .mo-upcoming-entries {
-  background: #f5f5f5;
+
   margin-left:1em;
 }
 .mo-sidebar-right {

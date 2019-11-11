@@ -1,8 +1,6 @@
 <nav class="mo-account-header">
   <h1 class="uk-h1"><%= account.name %></h1>
-  <div>
-    Total : <%= formatValue(account.currentBanlance) %>
-  </div>
+  <div class="mo-solde-total">Solde : <%= formatValue(account.currentBanlance) %></div>
   <div class="mo-links">
     <ul>
       <li><%= link_to 'Télécharger CSV', edit_account_path(account), class: "uk-button uk-button-text" %></li>

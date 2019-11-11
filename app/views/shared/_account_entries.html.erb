@@ -6,14 +6,15 @@
     <div class="uk-flex-column uk-width-1-5"><%= entry.category.name %></div>
     <div class="uk-flex-column uk-width-1-5"><%= entry.comment %></div>
     <div class="uk-flex-column uk-width-1-5"><%= entry.check_number %></div>
+    <div class="uk-flex-column uk-width-1-6"><span class="uk-label"><%= "Auto" if entry.recurrent_entry_id? %></span></div>
     <div class="uk-flex-column uk-width-1-6 uk-text-right"><%= formatValue(entry.value) %></div>
   </a>
   <% end %>
 </div>
+<div class="mo-upcoming-entries-header">
+  <div class="mo-solde-futur">Solde futur : <%= formatValue(account.absoluteBanlance) %></div>
+</div>
 <div class="mo-upcoming-entries uk-height-medium uk-position-bottom uk-overflow-auto">
-  <div>
-    Futur: <%= formatValue(account.absoluteBanlance) %>
-  </div>
   <% account.entries_after_today.each do |entry| %>
   <a href="<%= edit_entry_path(entry) %>" class="uk-flex uk-flex-row <%= cycle("om-odd", "om-even") %> <%= 'om-selected' unless (!selected_entry || selected_entry != entry) %>">
     <div class="uk-flex-column uk-width-auto mo-checked"><input class="uk-checkbox" type="checkbox" <%= entry.checked ? "checked" : "" %> disabled></div>
@@ -21,6 +22,7 @@
     <div class="uk-flex-column uk-width-1-5"><%= entry.category.name %></div>
     <div class="uk-flex-column uk-width-1-5"><%= entry.comment %></div>
     <div class="uk-flex-column uk-width-1-5"><%= entry.check_number %></div>
+    <div class="uk-flex-column uk-width-1-6"><span class="uk-label"><%= "Auto" if entry.recurrent_entry_id? %></span></div>
     <div class="uk-flex-column uk-width-1-6 uk-text-right"><%= formatValue(entry.value) %></div>
   </a>
   <% end %>
