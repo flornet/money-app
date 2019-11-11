@@ -1,0 +1,27 @@
+<div class="mo-current-entries uk-overflow-auto uk-position-top" >
+  <% account.entries_up_to_today(@number_of_entries).each do |entry| %>
+  <a href="<%= edit_entry_path(entry) %>" class="uk-flex uk-flex-row <%= cycle("om-odd", "om-even") %> <%= 'om-selected' unless (!selected_entry || selected_entry != entry) %>">
+    <div class="uk-flex-column uk-width-auto mo-checked"><input class="uk-checkbox" type="checkbox" <%= entry.checked ? "checked" : "" %> disabled></div>
+    <div class="uk-flex-column uk-width-1-6"><%= entry.effective_date %></div>
+    <div class="uk-flex-column uk-width-1-5"><%= entry.category.name %></div>
+    <div class="uk-flex-column uk-width-1-5"><%= entry.comment %></div>
+    <div class="uk-flex-column uk-width-1-5"><%= entry.check_number %></div>
+    <div class="uk-flex-column uk-width-1-6 uk-text-right"><%= formatValue(entry.value) %></div>
+  </a>
+  <% end %>
+</div>
+<div class="mo-upcoming-entries uk-height-medium uk-position-bottom uk-overflow-auto">
+  <div>
+    Futur: <%= formatValue(account.absoluteBanlance) %>
+  </div>
+  <% account.entries_after_today.each do |entry| %>
+  <a href="<%= edit_entry_path(entry) %>" class="uk-flex uk-flex-row <%= cycle("om-odd", "om-even") %> <%= 'om-selected' unless (!selected_entry || selected_entry != entry) %>">
+    <div class="uk-flex-column uk-width-auto mo-checked"><input class="uk-checkbox" type="checkbox" <%= entry.checked ? "checked" : "" %> disabled></div>
+    <div class="uk-flex-column uk-width-1-6"><%= entry.effective_date %></div>
+    <div class="uk-flex-column uk-width-1-5"><%= entry.category.name %></div>
+    <div class="uk-flex-column uk-width-1-5"><%= entry.comment %></div>
+    <div class="uk-flex-column uk-width-1-5"><%= entry.check_number %></div>
+    <div class="uk-flex-column uk-width-1-6 uk-text-right"><%= formatValue(entry.value) %></div>
+  </a>
+  <% end %>
+</div>

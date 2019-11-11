@@ -1,0 +1,12 @@
+<div class="uk-card uk-card-default">
+    <div class="uk-card-header">
+      <% if entry.id.nil? %>
+      <h3 class="uk-h3">Ajouter une entrée</h3>
+      <% else %>
+      <h3 class="uk-h3">Modifier une entrée</h3>
+      <% end %>
+    </div>
+    <div class="uk-card-body">
+        <%= render 'entries/form', entry: entry, account: account %>
+    </div>
+</div>

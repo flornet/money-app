@@ -1,0 +1,43 @@
+<div class="uk-position-center">
+  <div class="uk-card uk-card-default uk-card-large uk-card-hover">
+      <div class="uk-card-header">
+        <h1 class="uk-card-title">Sign up</h1>
+      </div>
+      <div class="uk-card-body">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "uk-form-stacked"}) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="uk-margin">
+          <%= f.label :email, class: "uk-form-label" %>
+          <div class="uk-form-controls">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input" %>
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <%= f.label :password, class: "uk-form-label" %>
+          <div class="uk-form-controls">
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "uk-input" %>
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <%= f.label :password_confirmation, class: "uk-form-label" %>
+          <div class="uk-form-controls">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "uk-input" %>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up", class: "uk-button uk-button-default" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="uk-card-footer">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

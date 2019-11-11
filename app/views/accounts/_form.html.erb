@@ -1,0 +1,10 @@
+<%= form_with(model: account, local: true, html: { class: "uk-form-stacked"}) do |form| %>
+  <div class="uk-margin">
+    <%= form.label "Nom du compte", class: "uk-form-label" %>
+    <%= form.text_field :name, class: "uk-input" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Enregistrer", class: "uk-button uk-button-default" %>
+  </div>
+<% end %>

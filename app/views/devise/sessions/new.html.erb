@@ -1,0 +1,37 @@
+<div class="uk-position-center">
+  <div class="uk-card uk-card-default uk-card-large uk-card-hover">
+      <div class="uk-card-header">
+        <h1 class="uk-card-title">Identification</h1>
+      </div>
+      <div class="uk-card-body">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "uk-form-stacked"}) do |f| %>
+          <div class="uk-margin">
+            <%= f.label :email, class: "uk-form-label" %>
+            <div class="uk-form-controls">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input" %>
+            </div>
+          </div>
+
+          <div class="uk-margin">
+            <%= f.label :password, class: "uk-form-label" %>
+            <div class="uk-form-controls">
+              <%= f.password_field :password, autocomplete: "current-password", class: "uk-input" %>
+            </div>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="uk-margin">
+              <label class="uk-form-label"><%= f.check_box :remember_me, class: "uk-checkbox" %> Mémoriser sur cet ordinateur</label>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "Log in", class: "uk-button uk-button-default" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="uk-card-footer">
+        <%= render "devise/shared/links" %>
+      </div>
+  </div>
+</div>

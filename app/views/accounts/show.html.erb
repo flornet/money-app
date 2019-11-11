@@ -1,0 +1,8 @@
+<div class="mo-account uk-height-1-1 uk-position-relative" uk-height-viewport>
+  <%= render 'shared/account_header', account: @account %>
+  <%= render 'shared/account_entries', account: @account, selected_entry: nil %>
+</div>
+
+<div class="mo-sidebar-right uk-height-1-1" uk-height-viewport>
+  <%= render 'shared/entry_editor', entry: Entry.new, account: @account %>
+</div>
