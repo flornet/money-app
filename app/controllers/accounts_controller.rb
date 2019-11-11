@@ -3,6 +3,11 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1
   def show
+    filename = "[Money] - " + @account.name + " (" + Time.now.to_s + ")"
+    respond_to do |format|
+      format.html
+      format.csv { send_data @account.to_csv, filename: filename + ".csv" }
+    end
   end
 
   # GET /accounts/new

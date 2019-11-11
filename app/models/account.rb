@@ -25,4 +25,15 @@ class Account < ApplicationRecord
     return Entry.where("account_id = :account_id AND effective_date > :date", {account_id: id, date: Time.now}).reorder(effective_date: :asc, created_at: :asc)
   end
 
+  def to_csv
+    require 'csv'
+    entries = self.entries
+    csv_string = CSV.generate(:col_sep => ";") do |csv|
+       csv << ["Checked", "Date", "Category", "Comment", "Check number", "Value"]
+       for entry in entries
+           csv << [entry.checked,entry.effective_date,entry.category.name,entry.comment,entry.check_number,entry.value]
+       end
+    end
+  end
+
 end

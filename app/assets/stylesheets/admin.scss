@@ -105,6 +105,9 @@ body {
 
   margin-left:1em;
 }
+
+
+
 .mo-sidebar-right {
     position: fixed;
     top: 0;
@@ -139,6 +142,10 @@ body {
 .mo-sidebar-right .flatpickr-calendar .flatpickr-day.selected {
   background-color: #A8968F;
 }
+
+
+
+
 .mo-account a.uk-flex.uk-flex-row {
   padding: 0.2em;
   color: #666666;
@@ -167,6 +174,25 @@ body {
 .mo-account .uk-flex.uk-flex-row.om-odd {
 
 }
+.mo-main .uk-label {
+  font-size: 0.6em;
+  background: #dddddd;
+  color:#666666;
+}
+.mo-main .mo-checked-entry {
+  display: inline-block;
+  width:0.6em;
+  height: 0.6em;
+  margin-left: 0.3em;
+  background: #dddddd;
+  border-radius: 1em;
+}
+.mo-main .mo-checked-entry.checked {
+  background: #666666;
+}
+
+
+
 .positive_value {
   color: #ffffff;
   background: #3dbf6e;

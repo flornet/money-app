@@ -3,14 +3,14 @@
   <div class="mo-solde-total">Solde : <%= formatValue(account.currentBanlance) %></div>
   <div class="mo-links">
     <ul>
-      <li><%= link_to 'Télécharger CSV', edit_account_path(account), class: "uk-button uk-button-text" %></li>
+      <li><%= link_to 'Télécharger CSV', account_path(account, :format => "csv"), class: "uk-button uk-button-text" %></li>
       <li><%= link_to 'Renommer', edit_account_path(account), class: "uk-button uk-button-text" %></li>
       <li><%= link_to 'Supprimer', account, method: :delete, class: "uk-button uk-button-text", data: { confirm: 'Are you sure?' } %></li>
     </ul>
   </div>
   <div class="mo-settings">
     <span id='account_number_of_entries'>
-      Afficher les <select id="number_of_entries">
+      Afficher les <select id="number_of_entries" disabled>
         <%= options_for_select(NUMBER_OF_ENTRIES_OPTIONS, @number_of_entries)%>
       </select>
     </span>
