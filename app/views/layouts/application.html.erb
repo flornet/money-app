@@ -27,11 +27,6 @@
         <li class="<%= uk_active_url?(categories_path) %>"><%= link_to "Catégories", categories_url %></li>
       </ul>
 
-      <div> ici <br/>
-        <span uk-icon="icon: check"></span>
-        <a href="" uk-icon="icon: heart"></a>
-      </div>
-
       <div class="uk-position-bottom-left mo-user-account">
         <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => 'uk-link-muted'  %> (<%= current_user.email %>)
       </div>
