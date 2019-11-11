@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       elsif cookies[:selected_account]
         @current_account = Account.find_by_id(cookies[:selected_account])
       end
-      if !@current_account
+      if @current_account == ''
         @current_account = current_user.accounts[0]
       end
       cookies[:selected_account] = @current_account.id.to_s
