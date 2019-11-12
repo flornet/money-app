@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'admin/index'
+  get 'admin/change_number_of_entries/:amount', to: 'admin#change_number_of_entries', as: 'admin_change_number_of_entries'
 
   resources :accounts
   resources :entries

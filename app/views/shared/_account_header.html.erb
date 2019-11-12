@@ -9,10 +9,15 @@
     </ul>
   </div>
   <div class="mo-settings">
-    <span id='account_number_of_entries'>
-      Afficher les <select id="number_of_entries" disabled>
-        <%= options_for_select(NUMBER_OF_ENTRIES_OPTIONS, @number_of_entries)%>
-      </select>
-    </span>
+    <div class="uk-inline">
+        <span class="mo-label">Afficher les</span><button type="button" class="uk-button uk-button-small uk-button-default"><%= NUMBER_OF_ENTRIES_OPTIONS[@number_of_entries] %></button>
+        <div uk-dropdown="mode: click ; pos: bottom-right">
+          <ul class="uk-nav uk-dropdown-nav">
+            <% NUMBER_OF_ENTRIES_OPTIONS.each do |key, choice| %>
+              <li><%= link_to choice, admin_change_number_of_entries_url(key) %></li>
+            <% end %>
+          </ul>
+        </div>
+    </div>
   </div>
 </nav>

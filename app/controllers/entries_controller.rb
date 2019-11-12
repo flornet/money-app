@@ -10,6 +10,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new(reformat_value(entry_params))
     respond_to do |format|
       if @entry.save
+        cookies[:last_used_category] = @entry.category_id
         format.html { redirect_to @entry.account}
       else
         format.html { render :new }
@@ -21,6 +22,7 @@ class EntriesController < ApplicationController
   def update
     respond_to do |format|
       if @entry.update(reformat_value(entry_params))
+        cookies[:last_used_category] = @entry.category_id
         format.html { redirect_to @entry.account }
       else
         format.html { render :edit }
@@ -53,11 +55,13 @@ class EntriesController < ApplicationController
     #   Adds '-' when nothing is provided by default
     def reformat_value(params)
       local_params = params
-      if (!local_params[:value].to_s.starts_with?("+") && !local_params[:value].to_s.starts_with?("-"))
-        local_params[:value] = local_params[:value].to_s.gsub(',', '.').to_f.to_s
-        local_params[:value] = - local_params[:value].to_f
-      else
-        local_params[:value] = local_params[:value].to_s.gsub(',', '.').to_f.to_s
+      if (local_params[:value] != '')
+        if (!local_params[:value].to_s.starts_with?("+") && !local_params[:value].to_s.starts_with?("-"))
+          local_params[:value] = local_params[:value].to_s.gsub(',', '.').to_f.to_s
+          local_params[:value] = - local_params[:value].to_f
+        else
+          local_params[:value] = local_params[:value].to_s.gsub(',', '.').to_f.to_s
+        end
       end
       return local_params
     end

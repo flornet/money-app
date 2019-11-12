@@ -74,8 +74,16 @@ body {
   padding-right: 1em;
 }
 .mo-main .mo-account .mo-account-header .mo-settings {
-  display: block;
-  float:right;
+  display: inline-block;
+  position: absolute;
+  right:0;
+  bottom:0.4em;
+}
+.mo-main .mo-account .mo-account-header .mo-settings .mo-label {
+  margin-right: 0.4em;
+}
+.mo-main .mo-account .mo-account-header .mo-settings .uk-button {
+
 }
 .mo-main .mo-account .mo-account-header .mo-solde-total {
   display: block;
@@ -149,9 +157,7 @@ body {
 .mo-account a.uk-flex.uk-flex-row {
   padding: 0.2em;
   color: #666666;
-}
-.mo-account .uk-flex.uk-flex-row .mo-checked {
-  padding-right: 1em;
+  font-size: 0.9em;
 }
 .mo-account .uk-flex.uk-flex-row:hover,
 .mo-account .uk-flex.uk-flex-row.om-even:hover,
@@ -172,8 +178,14 @@ body {
   background-color: #f5f5f5;
 }
 .mo-account .uk-flex.uk-flex-row.om-odd {
-
 }
+.mo-account .uk-flex.uk-flex-row .mo-checked {            width: 3%;  }
+.mo-account .uk-flex .uk-flex-column.mo-effective-date {  width: 11%; }
+.mo-account .uk-flex .uk-flex-column.mo-category {        width: 23%; }
+.mo-account .uk-flex .uk-flex-column.mo-comment {         width: 29%; }
+.mo-account .uk-flex .uk-flex-column.mo-check-number {    width: 11%; }
+.mo-account .uk-flex .uk-flex-column.mo-label {           width: 11%; }
+.mo-account .uk-flex .uk-flex-column.mo-value {           width: 12%; }
 .mo-main .uk-label {
   font-size: 0.6em;
   background: #dddddd;

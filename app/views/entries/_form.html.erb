@@ -18,7 +18,7 @@
     <%= form.label :category_id, class: "uk-form-label" %>
     <div class="uk-form-controls">
       <select class="uk-select" name="entry[category_id]" id="entry_category_id">
-        <%= options_from_collection_for_select(current_user.categories, :id, :name) %>
+        <%= options_from_collection_for_select(current_user.categories, :id, :name, entry.category_id || @last_used_category) %>
       </select>
     </div>
   </div>
@@ -33,14 +33,14 @@
   <div class="uk-margin">
     <%= form.label :check_number, class: "uk-form-label" %>
     <div class="uk-form-controls">
-      <%= form.text_field :check_number, class: "uk-input" %>
+      <%= form.text_field :check_number, class: "uk-input uk-form-width-small" %>
     </div>
   </div>
 
   <div class="uk-margin">
     <%= form.label :value, class: "uk-form-label" %>
     <div class="uk-form-controls">
-      <%= form.text_field :value, :value => field_value, class: "uk-input uk-form-width-small" %>
+      <%= form.text_field :value, :value => field_value, class: "uk-input uk-form-width-small", autofocus: true %> €
     </div>
   </div>
 

@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_preferences_from_cookies
+    @last_used_category = cookies[:last_used_category]
     @number_of_entries = "30"
     if cookies[:number_of_entries]
       @number_of_entries = cookies[:number_of_entries]
