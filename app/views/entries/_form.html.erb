@@ -15,7 +15,6 @@
   </div>
 
   <div class="uk-margin">
-    <%= form.label :category_id, class: "uk-form-label" %>
     <div class="uk-form-controls">
       <select class="uk-select" name="entry[category_id]" id="entry_category_id">
         <%= options_from_collection_for_select(current_user.categories, :id, :name, entry.category_id || @last_used_category) %>
@@ -24,23 +23,20 @@
   </div>
 
   <div class="uk-margin">
-    <%= form.label :comment, class: "uk-form-label" %>
     <div class="uk-form-controls">
-      <%= form.text_field :comment, class: "uk-input" %>
+      <%= form.text_field :comment, class: "uk-input", placeholder: "Commentaire" %>
     </div>
   </div>
 
   <div class="uk-margin">
-    <%= form.label :check_number, class: "uk-form-label" %>
     <div class="uk-form-controls">
-      <%= form.text_field :check_number, class: "uk-input uk-form-width-small" %>
+      <%= form.text_field :check_number, class: "uk-input uk-form-width-small", placeholder: "N° de chèque" %>
     </div>
   </div>
 
   <div class="uk-margin">
-    <%= form.label :value, class: "uk-form-label" %>
     <div class="uk-form-controls">
-      <%= form.text_field :value, :value => field_value, class: "uk-input uk-form-width-small", autofocus: true %> €
+      <%= form.text_field :value, :value => field_value, class: "uk-input uk-form-width-small", autofocus: true, placeholder: "Montant" %> €
     </div>
   </div>
 
@@ -50,9 +46,9 @@
 
   <div class="actions">
     <% if entry.id.nil? %>
-    <%= form.submit 'Ajouter', class: "uk-button uk-button-default" %>
+    <%= form.submit 'Ajouter', class: "uk-button uk-button-primary" %>
     <% else %>
-    <a href="<%= url_for account %>" class="uk-button uk-button-text">Annuler</a> <%= form.submit 'Enregistrer', class: "uk-button uk-button-default" %>
+    <a href="<%= url_for account %>" class="uk-button uk-button-text">Annuler</a> <%= form.submit 'Enregistrer', class: "uk-button uk-button-primary" %>
     <hr />
     <%= link_to 'Supprimer', entry, method: :delete, class: "uk-button uk-button-text" , data: { confirm: 'Are you sure?' } %>
     <% end %>

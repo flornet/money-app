@@ -1,43 +1,34 @@
-<h1 class="uk-h1">Factures périodiques</h1>
+<div class="mo-secondary">
+  <h1 class="uk-h1">Factures périodiques</h1>
+  <%= link_to 'Ajouter une facture périodique', new_recurrent_entry_path, class: "uk-button uk-button-primary" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Active</th>
-      <th>User</th>
-      <th>Account</th>
-      <th>Category</th>
-      <th>Checked</th>
-      <th>Comment</th>
-      <th>Value</th>
-      <th>Frequency</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @recurrent_entries.each do |recurrent_entry| %>
+  <table class="uk-table uk-table-small uk-table-striped uk-table-hover">
+    <thead>
       <tr>
-        <td><%= recurrent_entry.active %></td>
-        <td><%= recurrent_entry.user_id %></td>
-        <td><%= recurrent_entry.account_id %></td>
-        <td><%= recurrent_entry.category_id %></td>
-        <td><%= recurrent_entry.checked %></td>
-        <td><%= recurrent_entry.comment %></td>
-        <td><%= recurrent_entry.value %></td>
-        <td><%= recurrent_entry.frequency %></td>
-        <td><%= recurrent_entry.start_date %></td>
-        <td><%= recurrent_entry.end_date %></td>
-        <td><%= link_to 'Show', recurrent_entry %></td>
-        <td><%= link_to 'Edit', edit_recurrent_entry_path(recurrent_entry) %></td>
-        <td><%= link_to 'Destroy', recurrent_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Compte</th>
+        <th>Catégorie</th>
+        <th>Montant</th>
+        <th>Fréquence</th>
+        <th>Du</th>
+        <th>Au</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @recurrent_entries.each do |recurrent_entry| %>
+        <tr>
+          <td><%= recurrent_entry.account.name %></td>
+          <td><%= recurrent_entry.category.name %> <span class="uk-label"><%= "Inactif" if !recurrent_entry.active? %></span></td>
+          <td><%= formatValue(recurrent_entry.value) %></td>
+          <td><%= recurrent_entry.frequency %></td>
+          <td><%= recurrent_entry.start_date %></td>
+          <td><%= recurrent_entry.end_date %></td>
+          <td><%= link_to 'Edit', edit_recurrent_entry_path(recurrent_entry), class: "uk-button uk-button-text" %></td>
+          <td><%= link_to 'Destroy', recurrent_entry, method: :delete, class: "uk-button uk-button-text", data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Recurrent Entry', new_recurrent_entry_path %>
+</div>

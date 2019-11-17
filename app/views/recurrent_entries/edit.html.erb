@@ -1,6 +1,12 @@
-<h1>Editing Recurrent Entry</h1>
-
-<%= render 'form', recurrent_entry: @recurrent_entry %>
-
-<%= link_to 'Show', @recurrent_entry %> |
-<%= link_to 'Back', recurrent_entries_path %>
+<div class="uk-position-center">
+  <div class="uk-card uk-card-default uk-card-large uk-card-hover">
+      <div class="uk-card-header">
+        <h1 class="uk-card-title">Modifier la facture périodique</h1>
+      </div>
+      <div class="uk-card-body">
+        <%= render 'form', recurrent_entry: @recurrent_entry %>
+        <hr />
+        <%= link_to 'Annuler', recurrent_entries_path, class: "uk-button uk-button-default" %>
+      </div>
+  </div>
+</div>

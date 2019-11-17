@@ -1,67 +1,54 @@
-<%= form_with(model: recurrent_entry, local: true) do |form| %>
-  <% if recurrent_entry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(recurrent_entry.errors.count, "error") %> prohibited this recurrent_entry from being saved:</h2>
-
-      <ul>
-        <% recurrent_entry.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
+<%= form_with(model: recurrent_entry, local: true, html: { class: "uk-form-stacked"}) do |form| %>
+  <div class="uk-margin">
+    <%= form.label :active, class: "uk-form-label" %>
+    <%= form.check_box :active, class: "uk-checkbox" %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+  <div class="uk-margin">
+    <%= form.label :account_id, class: "uk-form-label" %>
+    <select class="uk-select" name="recurrent_entry[account_id]" id="recurrent_entry_account_id">
+      <%= options_from_collection_for_select(current_user.accounts, :id, :name, recurrent_entry.account_id) %>
+    </select>
   </div>
 
-  <div class="field">
-    <%= form.label :account_id %>
-    <%= form.number_field :account_id %>
+  <div class="uk-margin">
+    <%= form.label :category_id, class: "uk-form-label" %>
+    <select class="uk-select" name="recurrent_entry[category_id]" id="recurrent_entry_category_id">
+      <%= options_from_collection_for_select(current_user.categories, :id, :name, recurrent_entry.category_id) %>
+    </select>
   </div>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.number_field :category_id %>
+  <div class="uk-margin">
+    <%= form.label :checked, class: "uk-form-label" %>
+    <%= form.check_box :checked, class: "uk-checkbox" %>
   </div>
 
-  <div class="field">
-    <%= form.label :checked %>
-    <%= form.check_box :checked %>
+  <div class="uk-margin">
+    <%= form.label :comment, class: "uk-form-label" %>
+    <%= form.text_field :comment, class: "uk-input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_field :comment %>
+  <div class="uk-margin">
+    <%= form.label :value, class: "uk-form-label" %>
+    <%= form.text_field :value, class: "uk-input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :value %>
-    <%= form.text_field :value %>
+  <div class="uk-margin">
+    <%= form.label :frequency, class: "uk-form-label" %>
+    <%= form.text_field :frequency, class: "uk-input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :frequency %>
-    <%= form.text_field :frequency %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
+  <div class="uk-margin">
+    <%= form.label :start_date, class: "uk-form-label" %>
     <%= form.date_select :start_date %>
   </div>
 
-  <div class="field">
-    <%= form.label :end_date %>
+  <div class="uk-margin">
+    <%= form.label :end_date, class: "uk-form-label" %>
     <%= form.date_select :end_date %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Enregistrer", class: "uk-button uk-button-primary"%>
   </div>
 <% end %>

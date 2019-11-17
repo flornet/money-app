@@ -9,7 +9,10 @@
   more : 16172C
 */
 body {
-
+  font-size: 16px;
+}
+.mo-secondary {
+  padding:1em;
 }
 .mo-sidebar-left {
     position: fixed;
@@ -21,6 +24,9 @@ body {
     overflow:auto;
     background-color: #363E49;
     color: #ffffff;
+}
+.mo-sidebar-left + .mo-main {
+    padding-left:16em
 }
 .mo-sidebar-left .uk-navbar-dropdown-nav .uk-nav-header {
   color: #ffffff;
@@ -48,12 +54,12 @@ body {
 }
 
 
-
 .mo-main {
 
 }
 .mo-main .mo-account {
   padding:1em;
+  padding-right:28em
 }
 .mo-main .mo-account .mo-account-header {
   border-bottom: 2px #A8968F solid;
@@ -91,6 +97,10 @@ body {
   right: 0;
   top: 0.6em;
   font-size: 1.6em;
+}
+.mo-main .mo-account .mo-current-entries,
+.mo-main .mo-account .mo-upcoming-entries {
+    margin-right:28em;
 }
 .mo-main .mo-account .mo-current-entries {
   margin-left:1em;
@@ -150,6 +160,9 @@ body {
 .mo-sidebar-right .flatpickr-calendar .flatpickr-day.selected {
   background-color: #A8968F;
 }
+.mo-sidebar-right  .actions .uk-button {
+  margin-right: 1em;
+}
 
 
 
@@ -186,7 +199,9 @@ body {
 .mo-account .uk-flex .uk-flex-column.mo-check-number {    width: 11%; }
 .mo-account .uk-flex .uk-flex-column.mo-label {           width: 11%; }
 .mo-account .uk-flex .uk-flex-column.mo-value {           width: 12%; }
-.mo-main .uk-label {
+
+.mo-main .mo-account .mo-current-entries .uk-label,
+.mo-main .mo-account .mo-upcoming-entries .uk-label {
   font-size: 0.6em;
   background: #dddddd;
   color:#666666;
@@ -204,7 +219,6 @@ body {
 }
 
 
-
 .positive_value {
   color: #ffffff;
   background: #3dbf6e;
@@ -214,6 +228,17 @@ body {
 .negative_value {
   color: #cb584c;
   padding: 0.1em 0.3em;
+}
+.uk-badge.mo-badge-warning {
+  background-color: #F5E0B1;
+  color: #A8968F;
+  /*
+    over: #F5E0B1
+    selected: #A8968F
+    more : 363E49
+    more : 202535
+    more : 16172C
+  */
 }
 .mo-account .uk-flex.uk-flex-row.om-selected .negative_value {
   background: #ffffff;
@@ -225,15 +250,108 @@ body {
   background-color: pink;
 }
 
-@media (min-width: 960px) {
-    .mo-sidebar-left + .mo-main {
-        padding-left:16em
-    }
-    .mo-main .mo-account {
-        padding-right:28em
-    }
-    .mo-main .mo-account .mo-current-entries,
-    .mo-main .mo-account .mo-upcoming-entries {
-        margin-right:28em;
-    }
+
+/*
+ * Tablet & Laptop
+ */
+@media only screen and (min-width: 800px) and (max-width: 1399px) {
+  body {
+    font-size: 15px;
+  }
+  .mo-secondary {
+    margin-top:3.5em;
+  }
+  .mo-sidebar-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    height:auto !important;
+    box-sizing: border-box;
+    width: 100% !important;
+    padding: 0.5em;
+    overflow:none;
+    z-index: 999;
+  }
+  .mo-sidebar-left .uk-nav li {
+    display: inline-block;
+  }
+  .mo-sidebar-left .uk-nav li a {
+    padding-right: 1em;
+  }
+  .mo-sidebar-left li.uk-nav-header {
+    display: none;
+  }
+  .mo-sidebar-left li.mo-first-settings-entry {
+    margin-left: 5em;
+  }
+  .mo-sidebar-left .uk-position-bottom-left.mo-user-account {
+    right:0;
+    left:auto;
+  }
+  .mo-sidebar-left + .mo-main {
+      padding-left:0;
+  }
+  .mo-main .mo-account {
+      padding-right:23em;
+      padding-top: 3.5em;
+  }
+  .mo-main .mo-account .mo-account-header h1.uk-h1 {
+    font-size: 2em;
+    line-height: 1em;
+    margin-bottom: 0.2em;
+  }
+  .mo-main .mo-account .mo-account-header .mo-solde-total {
+    top: 0.1em;
+    font-size: 1.2em;
+  }
+  .mo-main .mo-account .mo-account-header .mo-links,
+  .mo-main .mo-account .mo-account-header .mo-links .uk-button,
+  .mo-main .mo-account .mo-account-header .mo-settings,
+  .mo-main .mo-account .mo-account-header .mo-settings .uk-button {
+    font-size: 0.86em;
+  }
+  .mo-main .mo-account .mo-account-header .mo-settings {
+    bottom: 0;
+  }
+  .mo-main .mo-account .mo-account-header .mo-settings .uk-button {
+    line-height: 2em;
+    margin-bottom: 0.3em;
+  }
+  .mo-main .mo-account .mo-current-entries,
+  .mo-main .mo-account .mo-upcoming-entries {
+      margin-right:23em;
+  }
+  .mo-main .mo-account .mo-current-entries {
+    top:128px;
+    bottom:260px;
+  }
+  .mo-main .mo-account .mo-upcoming-entries-header {
+    right:23em;
+    bottom: 210px;
+  }
+  .mo-main .mo-account .mo-upcoming-entries.uk-height-medium {
+    height: 200px;
+  }
+  .mo-sidebar-right.uk-height-1-1 {
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: 24em !important;
+  }
+  .mo-sidebar-right.uk-height-1-1 .uk-card-header,
+  .mo-sidebar-right.uk-height-1-1 .uk-card-body {
+    padding: 1em;
+  }
+  .mo-sidebar-right.uk-height-1-1 .uk-card-body {
+    padding-top: 0;
+  }
+  .mo-sidebar-right.uk-height-1-1 .uk-card-header {
+    padding-top: 4em;
+  }
+  .mo-sidebar-right.uk-height-1-1 .uk-card-header h3.uk-h3 {
+    font-size: 1.2em;
+  }
+
+
 }

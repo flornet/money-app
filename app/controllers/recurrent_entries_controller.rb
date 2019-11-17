@@ -7,11 +7,6 @@ class RecurrentEntriesController < ApplicationController
     @recurrent_entries = RecurrentEntry.all
   end
 
-  # GET /recurrent_entries/1
-  # GET /recurrent_entries/1.json
-  def show
-  end
-
   # GET /recurrent_entries/new
   def new
     @recurrent_entry = RecurrentEntry.new
@@ -22,42 +17,35 @@ class RecurrentEntriesController < ApplicationController
   end
 
   # POST /recurrent_entries
-  # POST /recurrent_entries.json
   def create
     @recurrent_entry = RecurrentEntry.new(reformat_value(recurrent_entry_params))
+    @recurrent_entry.user = current_user
 
     respond_to do |format|
       if @recurrent_entry.save
-        format.html { redirect_to @recurrent_entry, notice: 'Recurrent entry was successfully created.' }
-        format.json { render :show, status: :created, location: @recurrent_entry }
+        format.html { redirect_to recurrent_entries_url, notice: 'Recurrent entry was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @recurrent_entry.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /recurrent_entries/1
-  # PATCH/PUT /recurrent_entries/1.json
   def update
     respond_to do |format|
       if @recurrent_entry.update(reformat_value(recurrent_entry_params))
-        format.html { redirect_to @recurrent_entry, notice: 'Recurrent entry was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recurrent_entry }
+        format.html { redirect_to recurrent_entries_url, notice: 'Recurrent entry was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @recurrent_entry.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /recurrent_entries/1
-  # DELETE /recurrent_entries/1.json
   def destroy
     @recurrent_entry.destroy
     respond_to do |format|
       format.html { redirect_to recurrent_entries_url, notice: 'Recurrent entry was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
